@@ -6,9 +6,11 @@
 
 class camera{
 
+    // Checking mouse conditions and initializing position:
     double lastMouseX = 0.0, lastMouseY = 0.0;
     bool firstClick = true;
 
+    // Values that feel good (no real meaning):
     float sensitivity = 0.0009f;
     float speed = 5.0f;
 
@@ -46,6 +48,7 @@ class camera{
             firstClick = true;
         }
 
+         // Checking for clicks on user keyboard to be used for camera movement.
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {targetVelocity.x += sin(yaw) * speed * deltaTime; targetVelocity.z += cos(yaw) * speed * deltaTime;}
         if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {targetVelocity.x -= sin(yaw) * speed * deltaTime; targetVelocity.z -= cos(yaw) * speed * deltaTime;}
         if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {targetVelocity.x += cos(yaw) * speed * deltaTime; targetVelocity.z += -sin(yaw) * speed * deltaTime;}
@@ -53,12 +56,15 @@ class camera{
         if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS) targetVelocity.y -= speed*deltaTime;
         if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) targetVelocity.y += speed*deltaTime;
 
+        // Calculating velocity for Camera to automatically slow down and adding smoothing:
+        float smoothing = 1.0f;
         float smoothing = 1.0f;
         float t = 1.0f - std::exp(-smoothing * deltaTime);
         velocity.x += (targetVelocity.x - velocity.x) * t;
         velocity.y += (targetVelocity.y - velocity.y) * t;
         velocity.z += (targetVelocity.z - velocity.z) * t;
 
+        // Updating camera position with aspects to velocity and time:
         cameraPos.x += velocity.x * deltaTime;
         cameraPos.y += velocity.y * deltaTime;
         cameraPos.z += velocity.z * deltaTime;
