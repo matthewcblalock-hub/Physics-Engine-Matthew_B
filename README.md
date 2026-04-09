@@ -25,5 +25,7 @@ Intersection point of a sphere
 
 Intersection point of a sphere (Dot product form)
 (D·D)t² + 2(D·oc)t + (oc·oc - r²) = 0
+
 MAIN 1:
+
 Main 1 is the first version of the engine and is currently being cleaned up to go into the other files, MAIN 1 will be deleted.
