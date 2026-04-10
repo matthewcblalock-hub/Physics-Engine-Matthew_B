@@ -73,7 +73,5 @@ class camera{
         cameraPos.y += velocity.y * deltaTime;
         cameraPos.z += velocity.z * deltaTime;
 
-        
-
     }    
 };
