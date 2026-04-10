@@ -64,10 +64,16 @@ class camera{
         velocity.y += (targetVelocity.y - velocity.y) * t;
         velocity.z += (targetVelocity.z - velocity.z) * t;
 
+        if(cameraPos.y <= 0.1){
+            cameraPos.y += abs(velocity.y * deltaTime);
+        }
+
         // Updating camera position with aspects to velocity and time:
         cameraPos.x += velocity.x * deltaTime;
         cameraPos.y += velocity.y * deltaTime;
         cameraPos.z += velocity.z * deltaTime;
+
+        
 
     }    
 };
