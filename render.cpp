@@ -23,6 +23,10 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH
             float ndcY = (2.0f * y_axis / HEIGHT - 1.0f) * aspect;
 
             float ndcX = 2.0f * x_axis / WIDTH - 1.0f;
+
+            // Direction of the Ray from Camera and the actual Ray:
+
+            Vec3 dir = (forward + right * ndcX + up * ndcY).normalize();
         }
     }
 }
