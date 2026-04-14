@@ -177,26 +177,25 @@ void render(Vec3 &cameraPos, double &yaw, double &pitch, Vec3 &center){
 
                     float skyT = 0.5f * (dir.y + 1.0f);
                     Vec3 sky = Vec3(1,1,1)*(1-skyT) + Vec3(0.5f,0.5f,1.0f)*skyT;
-                    float directionY = r.Direction.y;
-
-                    
                     setPixel(i,j,sky.x,sky.y,sky.z);
 
-                    if(r.Direction.y < 0 && cameraPos.x + r.Direction.x * t <= 20 && cameraPos.x + r.Direction.x * t >= -20 && cameraPos.z + r.Direction.z * t <=20 && cameraPos.z + r.Direction.z * t >= -20){
-                        Vec3 floorHit = cameraPos + r.Direction*t;
+                    if(r.Direction.y < 0){
+                        float floorT = -cameraPos.y / r.Direction.y;
+                        Vec3 floorHit = cameraPos + r.Direction * floorT;
 
-                        // Shadow ray from floor towards the light:
-                        ray shadowRay(floorHit + Vec3(0,0.001f,0), lightDir);
-                        float shadowT = shadowRay.sphereint(1.0f, center);
+                        if(floorHit.x <= 20 && floorHit.x >= -20 && floorHit.z <= 20 && floorHit.z >= -20){
+                            // Shadow ray from floor towards the light:
+                            ray shadowRay(floorHit + Vec3(0,0.001f,0), lightDir);
+                            float shadowT = shadowRay.sphereint(1.0f, center);
 
-                        float shadow = (shadowT > 0) ? 0.3f : 1.0f;
+                            float shadow = (shadowT > 0) ? 0.3f : 1.0f;
 
-                        if(static_cast<int>(floor(cameraPos.x + r.Direction.x * t) + floor(cameraPos.z + r.Direction.z * t))% 2 == 0){
-                            setPixel(i,j, 0.7*shadow,0.7*shadow,0.7*shadow);
-                        }
-
-                        else{
-                            setPixel(i,j, 0.3*shadow,0.3*shadow,0.3*shadow);
+                            if(static_cast<int>(floor(floorHit.x) + floor(floorHit.z)) % 2 == 0){
+                                setPixel(i,j, 0.7*shadow,0.7*shadow,0.7*shadow);
+                            }
+                            else{
+                                setPixel(i,j, 0.3*shadow,0.3*shadow,0.3*shadow);
+                            }
                         }
                     }
                 }
