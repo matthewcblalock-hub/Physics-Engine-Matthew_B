@@ -58,7 +58,7 @@ class camera{
 
         // Calculating velocity for Camera to automatically slow down and adding smoothing:
         float smoothing = 1.0f;
-        float smoothing = 1.0f;
+
         float t = 1.0f - std::exp(-smoothing * deltaTime);
         velocity.x += (targetVelocity.x - velocity.x) * t;
         velocity.y += (targetVelocity.y - velocity.y) * t;
