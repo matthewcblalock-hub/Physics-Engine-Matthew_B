@@ -1,4 +1,4 @@
-#include "Vec.h"
+#include "Render_pointS.h"
 #include "Camera.h"
 
 void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH, int HEIGHT)
@@ -6,7 +6,7 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH
     // Making origin and point based off camera angle:
     Vec3 forward(sin(yaw)*cos(pitch), sin(pitch), cos(yaw)*cos(pitch));
 
-    Vec3 right = forward.cross(Vec3(0,1,0)).normalize();
+    Vec3 right = forward.cross(ren_data.Shift_r).normalize();
 
     Vec3 up = right.cross(forward).normalize();
 
