@@ -55,7 +55,6 @@ int main()
         return -1;
     }
 
-
     std::vector<Sphere> spheres = {
     {Vec3(0, 1, 2), 1.0f, Vec3(1, 0, 0), Vec3(0,0,0), 1.0f},
     {Vec3(3, 1, 0), 0.5f, Vec3(0, 1, 0), Vec3(0,0,0), 1.0f}
