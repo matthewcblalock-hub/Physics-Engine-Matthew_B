@@ -27,6 +27,10 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH
             // Direction of the Ray from Camera and the actual Ray:
 
             Vec3 dir = (forward + right * ndcX + up * ndcY).normalize();
+
+            ray New_Ray(CameraPos, dir);
+
+            float hitDist = New_Ray.sphereint(1.0f, center);
         }
     }
 }
