@@ -1,4 +1,4 @@
-#include "Render_pointS.h"
+#include "Render_points.h"
 #include "Camera.h"
 
 void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH, int HEIGHT)
