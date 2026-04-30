@@ -39,7 +39,6 @@ int main()
     }
 
     glfwMakeContextCurrent(window);
-    glfwSwapInterval(1);
     glfwGetWindowSize(window, &WIDTH, &HEIGHT);
     framebuffer.assign(WIDTH * HEIGHT * 3, 0.0f);
     glfwSetWindowSizeCallback(window, onResize);
@@ -60,6 +59,7 @@ int main()
     // Main loop
     while (!glfwWindowShouldClose(window))
     {
+        glfwSwapInterval(1);
         double now = glfwGetTime();
         float deltaTime = (float)(now - lastTime);
         lastTime = now;
@@ -156,7 +156,7 @@ void render(Vec3 &cameraPos, double &yaw, double &pitch, Vec3 &center){
                 ray r(cameraPos, dir);
                 float t = r.sphereint(1.0f, center);
 
-                Vec3 material = Vec3(1.0f, 0.0f, 0.0f);
+                Vec3 material = Vec3(1.0f, 0.0f, 1.0f);
                 Vec3 lightDir = Vec3(1.0f, 1.0f, -1.0f).normalize();
 
                 // Use the rays off of the light to color the sphere
