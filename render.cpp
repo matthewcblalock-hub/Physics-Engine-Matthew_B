@@ -31,6 +31,8 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH
             ray New_Ray(CameraPos, dir);
 
             float hitDist = New_Ray.sphereint(1.0f, center);
+            //TODO: Iterate through list of spheres and render each of them
+            // Try and keep it O LOG(N)
         }
     }
 }
