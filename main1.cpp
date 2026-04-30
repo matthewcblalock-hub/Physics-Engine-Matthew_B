@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Vec.h"
 
-int WIDTH = 1480;
+int WIDTH = 1280;
 int HEIGHT = 860;
 
 // pixel buffer
@@ -39,6 +39,7 @@ int main()
     }
 
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
     glfwGetWindowSize(window, &WIDTH, &HEIGHT);
     framebuffer.assign(WIDTH * HEIGHT * 3, 0.0f);
     glfwSetWindowSizeCallback(window, onResize);
@@ -127,6 +128,7 @@ int main()
         glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_FLOAT, framebuffer.data());
 
         glfwSwapBuffers(window);
+
     }
 
     glfwTerminate();
