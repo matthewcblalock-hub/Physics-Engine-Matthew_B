@@ -3,7 +3,7 @@
 // Holds all the Vec3 classes:
 #include "Vec.h"
 
-// Holds Sphere structs:
+// Includes the Sphere struct:
 #include "Sphere.h"
 
 // Initializing the window:
@@ -37,7 +37,7 @@ void setPixel(float x, float y, float red, float green, float blue)
 
 // Initialize render function in this file to be compiled:
 
-void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH, int HEIGHT);
+void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, std::vector<Sphere> &sphere,int WIDTH, int HEIGHT);
 
 int main()
 {

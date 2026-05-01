@@ -1,7 +1,9 @@
 #include "Render_points.h"
 #include "Camera.h"
+#include "iostream"
+#include "Sphere.h"
 
-void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, int WIDTH, int HEIGHT)
+void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, std::vector<Sphere> &sphere,int WIDTH, int HEIGHT)
 {
     // Making origin and point based off camera angle:
     Vec3 forward(sin(yaw)*cos(pitch), sin(pitch), cos(yaw)*cos(pitch));
