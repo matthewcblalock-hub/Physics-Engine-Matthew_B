@@ -22,9 +22,9 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, std::vect
         {
             
             // ndc = Normalized Device Coordinates (Center of the screen)
-            float ndcY = (2.0f * y_axis / HEIGHT - 1.0f) * aspect;
+            float ndcX = (2.0f * y_axis / WIDTH - 1.0f) * aspect;
 
-            float ndcX = 2.0f * x_axis / WIDTH - 1.0f;
+            float ndcY = 2.0f * x_axis / HEIGHT - 1.0f;
 
             // Direction of the Ray from Camera and the actual Ray:
 
