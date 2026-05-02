@@ -10,18 +10,17 @@ CXXFLAGS = -std=c++17 -I./include -DGL_SILENCE_DEPRECATION
 LDFLAGS = -L./include/lib-arm64
 LIBS = -lglfw3 -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 
+# Find all .cpp files and derive executable names from them
 SRCS = $(wildcard *.cpp)
-OBJS = $(SRCS:.cpp=.o)
-TARGET = physics_engine
+TARGETS = $(SRCS:.cpp=)
 
-all: $(TARGET)
+# Build all executables
+all: $(TARGETS)
 
-$(TARGET): $(OBJS)
-	$(CXX) $(OBJS) $(LDFLAGS) -o $@ $(LIBS)
-
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# Pattern rule: build any executable from its matching .cpp file
+%: %.cpp
+	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< -o $@ $(LIBS)
 
 .PHONY: clean all
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGETS)

@@ -1,8 +1,8 @@
 #include <iostream>
 #include "Vec.h"
 
-int WIDTH = 1280;
-int HEIGHT = 860;
+int WIDTH = 1440;
+int HEIGHT = 1080;
 
 // pixel buffer
 // Each pixel is 3 floats: R, G, B (0.0 to 1.0)
