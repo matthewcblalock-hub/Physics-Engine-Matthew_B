@@ -37,7 +37,7 @@ void setPixel(float x, float y, float red, float green, float blue)
 
 // Initialize render function in this file to be compiled:
 
-void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, std::vector<Sphere> &sphere,int WIDTH, int HEIGHT);
+void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, std::vector<Sphere> &Spheres,int WIDTH, int HEIGHT);
 
 int main()
 {
@@ -55,7 +55,7 @@ int main()
         return -1;
     }
 
-    std::vector<Sphere> spheres = {
+    std::vector<Sphere> Spheres = {
     {Vec3(0, 1, 2), 1.0f, Vec3(1, 0, 0), Vec3(0,0,0), 1.0f},
     {Vec3(3, 1, 0), 0.5f, Vec3(0, 1, 0), Vec3(0,0,0), 1.0f}
     };
