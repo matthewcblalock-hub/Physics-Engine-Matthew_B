@@ -3,6 +3,8 @@
 #include "iostream"
 #include "Sphere.h"
 
+Ren_Data Random_Values;
+
 void setPixel(float x, float y, float r, float g, float b);
 
 void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Spheres,int WIDTH, int HEIGHT)
@@ -10,7 +12,7 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
     // Making origin and point based off camera angle:
     Vec3 forward(sin(yaw)*cos(pitch), sin(pitch), cos(yaw)*cos(pitch));
 
-    Vec3 right = forward.cross(ren_data.Shift_r).normalize();
+    Vec3 right = forward.cross(Random_Values.Shift_r).normalize();
 
     Vec3 up = right.cross(forward).normalize();
 
