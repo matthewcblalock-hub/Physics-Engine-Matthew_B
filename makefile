@@ -1,26 +1,17 @@
-# CXX — the C++ compiler to use
-# CXXFLAGS — compiler flags (standard, include paths, defines)
-# LDFLAGS — linker flags (library search paths)
-# LIBS — libraries to link against
-# $(VAR) — how you reference a variable
-
-# Variables — define once, reuse everywhere
 CXX = clang++
 CXXFLAGS = -std=c++17 -I./include -DGL_SILENCE_DEPRECATION
 LDFLAGS = -L./include/lib-arm64
 LIBS = -lglfw3 -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 
-# Find all .cpp files and derive executable names from them
-SRCS = $(wildcard *.cpp)
-TARGETS = $(SRCS:.cpp=)
+main: main.o render.o
+	$(CXX) $(LDFLAGS) main.o render.o -o main $(LIBS)
 
-# Build all executables
-all: $(TARGETS)
+main.o: main.cpp Vec.h Sphere.h
+	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
 
-# Pattern rule: build any executable from its matching .cpp file
-%: %.cpp
-	$(CXX) $(CXXFLAGS) $(LDFLAGS) $< -o $@ $(LIBS)
+render.o: render.cpp Render_points.h Camera.h Sphere.h
+	$(CXX) $(CXXFLAGS) -c render.cpp -o render.o
 
-.PHONY: clean all
+.PHONY: clean
 clean:
-	rm -f $(TARGETS)
+	rm -f main main.o render.o
