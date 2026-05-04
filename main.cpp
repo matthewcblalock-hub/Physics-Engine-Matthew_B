@@ -78,7 +78,7 @@ int main()
     
     while (!glfwWindowShouldClose(window))
     {
-        glfwSwapInterval(2);
+        glfwSwapInterval(1);
         glfwPollEvents();
 
         glClear(GL_COLOR_BUFFER_BIT);
