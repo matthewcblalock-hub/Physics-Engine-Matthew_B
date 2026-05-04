@@ -17,8 +17,8 @@ class camera{
     public:
 
     // Initialize componets:
-    Vec3 cameraPos;
-    Vec3 velocity;
+    Vec3 cameraPos{0,0,0};
+    Vec3 velocity{0,0,0};
     double yaw, pitch;
 
     void update(GLFWwindow* window, float deltaTime){

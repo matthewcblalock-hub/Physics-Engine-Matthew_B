@@ -6,7 +6,8 @@
 // Includes the Sphere struct:
 #include "Sphere.h"
 
-// Initializing the window:
+// Allow Camera attributes to be included:
+#include "Camera.h"
 
 int WIDTH = 1480;
 int HEIGHT = 860;
@@ -37,7 +38,7 @@ void setPixel(float x, float y, float red, float green, float blue)
 
 // Initialize render function in this file to be compiled:
 
-void render(Vec3 &CameraPos, double &yaw, double &pitch, Vec3 &center, std::vector<Sphere> &Spheres,int WIDTH, int HEIGHT);
+void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Spheres,int WIDTH, int HEIGHT);
 
 int main()
 {
@@ -68,16 +69,22 @@ int main()
     framebuffer.assign(WIDTH * HEIGHT * 3, 0.0f);
     glfwSetWindowSizeCallback(window, onResize);
 
-    // Main loop:
+    camera cam;
 
+    float lastTime = glfwGetTime(); float deltaTime = 0;
+
+    // Main loop:
+    
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
 
         glClear(GL_COLOR_BUFFER_BIT);
 
+        deltaTime = glfwGetTime() - lastTime; lastTime = glfwGetTime();
+        cam.update(window, deltaTime);
         // TODO: Add render function here later
-
+        render(cam.cameraPos, cam.yaw, cam.pitch, Spheres, WIDTH, HEIGHT);
 
         glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_FLOAT, framebuffer.data());
 
