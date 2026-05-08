@@ -98,10 +98,10 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
                             float shadow = inshadow ? 0.3f : 1.0f;
 
                             if(static_cast<int>(floor(floorHit.x) + floor(floorHit.z)) % 2 == 0){
-                                setPixel(x_axis,y_axis, 0.7*shadow,0.7*shadow,0.7*shadow);
+                                setPixel(x_axis,y_axis, 0.6*shadow,0.6*shadow,0.6*shadow);
                             }
                             else{
-                                setPixel(x_axis,y_axis, 0.3*shadow,0.3*shadow,0.3*shadow);
+                                setPixel(x_axis,y_axis, 0.2*shadow,0.2*shadow,0.2*shadow);
                             }
                         }
                 }
