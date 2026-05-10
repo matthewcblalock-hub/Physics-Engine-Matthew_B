@@ -1,8 +1,8 @@
 #include "Vec.h"
 
-//*******************************************************
+
 // This file contains all of the camera Classes/Functions
-//*******************************************************
+
 
 class camera{
 
