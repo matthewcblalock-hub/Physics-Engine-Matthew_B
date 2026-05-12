@@ -3,11 +3,13 @@
 // Holds all the Vec3 classes:
 #include "Vec.h"
 
-// Includes the Sphere struct:
-#include "Sphere.h"
-
 // Allow Camera attributes to be included:
 #include "Camera.h"
+
+//Include file for all physics attributes along with the Sphere struct:
+#include "Vec3_Physics.cpp"
+Physics sphere_p;
+
 
 int WIDTH = 1480;
 int HEIGHT = 860;
@@ -57,11 +59,10 @@ int main()
     }
 
     std::vector<Sphere> Spheres = {
-    {Vec3(0, 1, 2), 1.0f, Vec3(1, 0, 0), Vec3(0,0,0), 1.0f},
-    {Vec3(0, 0.5, -1.5), 0.5f, Vec3(0, 1, 0), Vec3(0,0,0), 1.0f},
-    {Vec3(0, 0.75, 0), 0.75f, Vec3(0, 0, 1), Vec3(0,0,0), 1.0f}
+    {Vec3(0, 10, 2), 1.0f, Vec3(1, 0, 0), Vec3(0,0,0), 1.0f},
+    {Vec3(0, 5, -1.5), 0.5f, Vec3(0, 1, 0), Vec3(0,0,0), 1.0f},
+    {Vec3(0, 6, 0), 0.75f, Vec3(0, 0, 1), Vec3(0,0,0), 1.0f}
     };
-
 
     // Changing window size in real time:
 
@@ -85,7 +86,9 @@ int main()
 
         deltaTime = glfwGetTime() - lastTime; lastTime = glfwGetTime();
         cam.update(window, deltaTime);
-        // TODO: Add render function here later
+
+        sphere_p.update_velocity(Spheres, deltaTime);
+
         render(cam.cameraPos, cam.yaw, cam.pitch, Spheres, WIDTH, HEIGHT);
 
         glDrawPixels(WIDTH, HEIGHT, GL_RGB, GL_FLOAT, framebuffer.data());

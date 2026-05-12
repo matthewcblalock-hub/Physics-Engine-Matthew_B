@@ -1,8 +1,6 @@
 #include "Vec.h"
 
-
 // This file contains all of the camera Classes/Functions
-
 
 class camera{
 
@@ -17,7 +15,7 @@ class camera{
     public:
 
     // Initialize componets:
-    Vec3 cameraPos{3,1,0};
+    Vec3 cameraPos{0,3,-5};
     Vec3 velocity{0,0,0};
     double yaw, pitch;
 
