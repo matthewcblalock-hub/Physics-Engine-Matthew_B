@@ -10,7 +10,6 @@
 #include "Vec3_Physics.cpp"
 Physics sphere_p;
 
-
 int WIDTH = 1480;
 int HEIGHT = 860;
 
