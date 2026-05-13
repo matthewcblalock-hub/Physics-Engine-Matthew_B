@@ -86,7 +86,7 @@ int main()
         deltaTime = glfwGetTime() - lastTime; lastTime = glfwGetTime();
         cam.update(window, deltaTime);
 
-        sphere_p.update_velocity(Spheres, deltaTime);
+        sphere_p.update_velocity_sphere(Spheres, deltaTime);
 
         render(cam.cameraPos, cam.yaw, cam.pitch, Spheres, WIDTH, HEIGHT);
 
