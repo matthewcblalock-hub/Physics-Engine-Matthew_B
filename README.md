@@ -31,3 +31,4 @@ MAIN 1:
 Main 1 is the first version of the engine and is currently being cleaned up to go into the other files, MAIN 1 will be deleted.
 
 The file of include where GLFW was included was not altered in anyway and is used to create the window of this project. Thanks to the creators of GLFW for making it possible
+<img width="949" height="484" alt="Screenshot 2026-05-05 at 2 24 54 PM" src="https://github.com/user-attachments/assets/0376b455-7b1e-4aa3-95f2-a99ddf49c3bf" />
