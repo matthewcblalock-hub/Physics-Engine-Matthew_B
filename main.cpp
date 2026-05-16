@@ -7,7 +7,7 @@
 #include "Camera.h"
 
 //Include file for all physics attributes along with the Sphere struct:
-#include "Vec3_Physics.cpp"
+#include "Vec3_Physics.h"
 Physics sphere_p;
 
 int WIDTH = 1480;
