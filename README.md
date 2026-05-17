@@ -32,6 +32,6 @@ Main 1 is the first version of the engine and is currently being cleaned up to g
 
 The file of include where GLFW was included was not altered in anyway and is used to create the window of this project. Thanks to the creators of GLFW for making it possible
 
-<img width="949" height="484" alt="Screenshot 2026-05-05 at 2 24 54 PM" src="https://github.com/user-attachments/assets/0376b455-7b1e-4aa3-95f2-a99ddf49c3bf" />
+<img width="949" height="484" alt="Screenshot 2026-05-05 at 2 24 54 PM" src="https://github.com/user-attachments/assets/4a6fc63f-514e-4254-aa57-1cc1bcd879ef" />
 
 Here is the image of the second iteration of the ray tracer with multiple spheres being rendered, evantually the Möller-Trumbore algorithm will be implemented so that the ray tracer can render triangle meshes. Along with improvements in optimization and other expected updates like refelctions.
