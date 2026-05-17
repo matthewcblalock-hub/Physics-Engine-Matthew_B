@@ -36,7 +36,6 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
 
             ray New_Ray(CameraPos, dir);
 
-            //TODO: Iterate through list of spheres and render each of them
 
             // Setting the first closest hit value to be the highest possible to ensure that the next one is contained within it:
             float closestHit = std::numeric_limits<float>::max();
