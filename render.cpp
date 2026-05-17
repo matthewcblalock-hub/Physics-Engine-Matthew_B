@@ -66,9 +66,22 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
 
                 ray shadowRay(shadowOrigin, lightDir);
 
-                float shadowT = shadowRay.sphereint(hitSphere->radius, hitSphere->center);
+                bool inShadow = false;
 
-                float intensity = (shadowT > 0) ? 0.0f : std::max(0.0f, SurfaceNorm.dot(lightDir));
+                for(const Sphere &each_sphere : Spheres){
+                    if(shadowRay.sphereint(each_sphere.radius, each_sphere.center) > 0){
+                        inShadow = true;
+                        break;
+                    }
+                }
+
+                // TODO: add real path tracing with real bounces of light
+                // This is faking light bounces: 
+                float ambient = 0.1f;
+
+                float diffuse = std::max(0.0f, SurfaceNorm.dot(lightDir));
+
+                float intensity = inShadow ? ambient : ambient + (1.0f - ambient) * diffuse;
 
                 //Pointing to the material of the closest sphere:
                 Vec3 material = hitSphere->material;
@@ -90,18 +103,22 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
                         if(floorHit.x <= 20 && floorHit.x >= -20 && floorHit.z <= 20 && floorHit.z >= -20){
                             // Shadow ray from floor towards the light:
                             ray shadowRay(floorHit + Vec3(0,0.001f,0), lightDir);
+
                             bool inshadow = false;
+
                             for(const Sphere& sphere : Spheres){
                                 if(shadowRay.sphereint(sphere.radius, sphere.center) > 0){inshadow = true; break;}
                             }
 
-                            float shadow = inshadow ? 0.3f : 1.0f;
+                            Vec3 floorNorm(0, 1, 0);
+                            float floorDiffuse = std::max(0.0f, floorNorm.dot(lightDir));
+                            float shadow = inshadow ? 0.2f : 0.2f + floorDiffuse;
 
                             if(static_cast<int>(floor(floorHit.x) + floor(floorHit.z)) % 2 == 0){
-                                setPixel(x_axis,y_axis, 0.6*shadow,0.6*shadow,0.6*shadow);
+                                setPixel(x_axis,y_axis, 0.7*shadow,0.7*shadow,0.7*shadow);
                             }
                             else{
-                                setPixel(x_axis,y_axis, 0.2*shadow,0.2*shadow,0.2*shadow);
+                                setPixel(x_axis,y_axis, 0.3*shadow,0.3*shadow,0.3*shadow);
                             }
                         }
                 }
