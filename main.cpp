@@ -41,6 +41,7 @@ void setPixel(float x, float y, float red, float green, float blue)
 
 void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Spheres,int WIDTH, int HEIGHT);
 
+
 int main()
 {
     // Making the window with the screen dimensions:
@@ -58,9 +59,8 @@ int main()
     }
 
     std::vector<Sphere> Spheres = {
-    {Vec3(0, 10, 2), 1.0f, Vec3(1, 0, 0), Vec3(0,0,0), 1.0f},
-    {Vec3(0, 5, -1.5), 0.5f, Vec3(0, 1, 0), Vec3(0,0,0), 1.0f},
-    {Vec3(1.0, 6, 0), 0.75f, Vec3(0, 0, 1), Vec3(0,0,0), 1.0f}
+    {Vec3(0, 10, 2), 1.0f, Vec3(1, 0, 0), Vec3(0.96,0,0), 5.0f},
+    {Vec3(0, 5, -1.5), 0.5f, Vec3(0, 1, 0), Vec3(-2.39,0,0), 2.0f}
     };
 
     // Changing window size in real time:
@@ -86,7 +86,7 @@ int main()
         deltaTime = glfwGetTime() - lastTime; lastTime = glfwGetTime();
         cam.update(window, deltaTime);
 
-        sphere_p.update_velocity_sphere(Spheres, deltaTime);
+        sphere_p.orbital_mechanics(Spheres, deltaTime);
 
         render(cam.cameraPos, cam.yaw, cam.pitch, Spheres, WIDTH, HEIGHT);
 

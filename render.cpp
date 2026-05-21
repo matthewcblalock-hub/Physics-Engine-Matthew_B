@@ -53,7 +53,7 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
                 }
             }
             //TODO: Make lightdir changeable while running
-            Vec3 lightDir = Vec3(1.0f,1.0f,-1.0f).normalize();
+            Vec3 lightDir = Vec3(1.0f,1.0f,0.0f).normalize();
             
             if(hitSphere){
 
