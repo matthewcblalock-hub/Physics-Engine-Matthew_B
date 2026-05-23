@@ -59,13 +59,12 @@ class Physics{
                 Body2.velocity.x -= (fx/Body2.mass)*deltaTime;
                 Body2.velocity.y -= (fy/Body2.mass)*deltaTime;
                 Body2.velocity.z -= (fz/Body2.mass)*deltaTime;
-
-                for(auto& body : Spheres){
+            }
+        }
+        for(auto& body : Spheres){
                     body.center.x += body.velocity.x * deltaTime;
                     body.center.y += body.velocity.y * deltaTime;
                     body.center.z += body.velocity.z * deltaTime;
-                }
-            }
         }
     }
 };

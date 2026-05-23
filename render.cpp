@@ -18,6 +18,7 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
 
     float aspect = (float)WIDTH/HEIGHT;
 
+    Vec3 lightDir = Vec3(1.0f,1.0f,0.0f).normalize();
     // Iterating through pixels on the screen:
 
     for (int y_axis = 0; y_axis < HEIGHT; y_axis++)
@@ -53,7 +54,7 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
                 }
             }
             //TODO: Make lightdir changeable while running
-            Vec3 lightDir = Vec3(1.0f,1.0f,0.0f).normalize();
+            
             
             if(hitSphere){
 
