@@ -62,9 +62,14 @@ class Physics{
             }
         }
         for(auto& body : Spheres){
-                    body.center.x += body.velocity.x * deltaTime;
-                    body.center.y += body.velocity.y * deltaTime;
-                    body.center.z += body.velocity.z * deltaTime;
+            body.center.x += body.velocity.x * deltaTime;
+            body.center.y += body.velocity.y * deltaTime;
+            body.center.z += body.velocity.z * deltaTime;
+            
+            if(body.center.y <= body.radius){
+                body.center.y = body.radius;
+                body.velocity.y *= Ball_bounciness;
+            }
         }
     }
 };
