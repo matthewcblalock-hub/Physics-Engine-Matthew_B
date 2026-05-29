@@ -2,10 +2,14 @@
 #include "Camera.h"
 #include "iostream"
 #include "Sphere.h"
+#include <thread>
+#include <functional>
 
 Ren_Data Random_Values;
 
 void setPixel(float x, float y, float r, float g, float b);
+
+void renderRows(int startY, int endY,Vec3 CameraPos, Vec3 forward, Vec3 right, Vec3 up, float aspect, Vec3 lightDir, const std::vector<Sphere> &Spheres, int WIDTH, int HEIGHT);
 
 void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Spheres,int WIDTH, int HEIGHT)
 {
@@ -19,9 +23,29 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
     float aspect = (float)WIDTH/HEIGHT;
 
     Vec3 lightDir = Vec3(1.0f,1.0f,0.0f).normalize();
-    // Iterating through pixels on the screen:
 
-    for (int y_axis = 0; y_axis < HEIGHT; y_axis++)
+    int numThreads = std::thread::hardware_concurrency();
+    int rowsPerThread = HEIGHT/numThreads;
+
+    std::vector<std::thread> threads;
+
+    for(int i = 0; i < numThreads; i++)
+    {
+        int startY = i * rowsPerThread;
+        int endY = (i == numThreads - 1) ? HEIGHT : startY + rowsPerThread;
+
+        threads.emplace_back(renderRows, startY, endY, CameraPos, forward, right, up, aspect, lightDir, std::ref(Spheres), WIDTH, HEIGHT);
+    
+    }
+
+    for (auto& t : threads)
+    t.join();
+}
+
+void renderRows(int startY, int endY,Vec3 CameraPos, Vec3 forward, Vec3 right, Vec3 up, float aspect, Vec3 lightDir, const std::vector<Sphere> &Spheres, int WIDTH, int HEIGHT){
+       // Iterating through pixels on the screen:
+
+    for (int y_axis = startY; y_axis < endY; y_axis++)
     {
         for (int x_axis = 0; x_axis < WIDTH; x_axis++)
         {

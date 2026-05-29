@@ -1,5 +1,5 @@
 CXX = clang++
-CXXFLAGS = -std=c++17 -I./include -DGL_SILENCE_DEPRECATION
+CXXFLAGS = -std=c++17 -O2 -pthread -I./include -DGL_SILENCE_DEPRECATION
 LDFLAGS = -L./include/lib-arm64
 LIBS = -lglfw3 -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
 
