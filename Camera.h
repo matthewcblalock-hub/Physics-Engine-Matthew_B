@@ -10,7 +10,7 @@ class camera{
 
     // Values that feel good (no real meaning):
     float sensitivity = 0.00009f;
-    float speed = 100.0f;
+    float speed = 300.0f;
 
     public:
 

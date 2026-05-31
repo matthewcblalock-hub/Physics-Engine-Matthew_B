@@ -7,7 +7,7 @@ class Physics{
     // Float for the gravity.
     float G = 9.8;
 
-    float Ball_bounciness = -0.6f;
+    float Ball_bounciness = -0.9f;
 
     public:
 
@@ -65,7 +65,7 @@ class Physics{
             body.center.x += body.velocity.x * deltaTime;
             body.center.y += body.velocity.y * deltaTime;
             body.center.z += body.velocity.z * deltaTime;
-            
+
             if(body.center.y <= body.radius){
                 body.center.y = body.radius;
                 body.velocity.y *= Ball_bounciness;

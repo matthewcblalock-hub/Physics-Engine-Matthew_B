@@ -34,7 +34,7 @@ void render(Vec3 &CameraPos, double &yaw, double &pitch, std::vector<Sphere> &Sp
         int startY = i * rowsPerThread;
         int endY = (i == numThreads - 1) ? HEIGHT : startY + rowsPerThread;
 
-        threads.emplace_back(renderRows, startY, endY, CameraPos, forward, right, up, aspect, lightDir, std::ref(Spheres), WIDTH, HEIGHT);
+        threads.emplace_back(renderRows, startY, endY, CameraPos, forward, right, up, aspect, lightDir, std::reference_wrapper(Spheres), WIDTH, HEIGHT);
     
     }
 
