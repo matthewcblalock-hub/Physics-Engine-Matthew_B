@@ -1,3 +1,4 @@
+#pragma once
 #include "Vec.h"
 
 // This file contains all of the camera Classes/Functions

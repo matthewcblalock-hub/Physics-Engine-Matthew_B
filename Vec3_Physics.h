@@ -1,3 +1,4 @@
+#pragma once
 #include <cmath>
 #include "Sphere.h"
 #include <vector>
@@ -37,34 +38,24 @@ class Physics{
                 auto& Body1 = Spheres[i];
                 auto& Body2 = Spheres[j];
 
-                float dx = Body2.center.x - Body1.center.x;
-                float dy = Body2.center.y - Body1.center.y;
-                float dz = Body2.center.z - Body1.center.z;
-                float hypot = sqrt(dx*dx + dy*dy + dz*dz);
-                if (hypot < 0.001f) continue;
+                Vec3 diff = Body2.center - Body1.center;
+                float dist = diff.length();
+                if (dist < 0.001f) continue;
 
                 // Force Magnitude:
-                float Force_mag = G*Body1.mass * Body2.mass/(hypot*hypot);
+                float Force_mag = G*Body1.mass * Body2.mass/(dist*dist);
 
                 // Force componets (direction):
-                float fx = (dx/hypot) * Force_mag;
-                float fy = (dy/hypot) * Force_mag;
-                float fz = (dz/hypot) * Force_mag;
+                Vec3 force = diff.normalize() * Force_mag;
 
                 // Apply to Body1 (attract to Body2)
-                Body1.velocity.x += (fx/Body1.mass)*deltaTime;
-                Body1.velocity.y += (fy/Body1.mass)*deltaTime;
-                Body1.velocity.z += (fz/Body1.mass)*deltaTime;
-
-                Body2.velocity.x -= (fx/Body2.mass)*deltaTime;
-                Body2.velocity.y -= (fy/Body2.mass)*deltaTime;
-                Body2.velocity.z -= (fz/Body2.mass)*deltaTime;
+                Body1.velocity = Body1.velocity + force * (deltaTime / Body1.mass);
+                Body2.velocity = Body2.velocity - force * (deltaTime / Body2.mass) ;
             }
         }
         for(auto& body : Spheres){
-            body.center.x += body.velocity.x * deltaTime;
-            body.center.y += body.velocity.y * deltaTime;
-            body.center.z += body.velocity.z * deltaTime;
+            body.center = body.center + body.velocity * deltaTime;
+            
 
             if(body.center.y <= body.radius){
                 body.center.y = body.radius;

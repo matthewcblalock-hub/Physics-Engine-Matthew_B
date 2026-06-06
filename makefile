@@ -9,7 +9,7 @@ main: main.o render.o
 main.o: main.cpp Vec.h Sphere.h
 	$(CXX) $(CXXFLAGS) -c main.cpp -o main.o
 
-render.o: render.cpp Render_points.h Camera.h Sphere.h
+render.o: render.cpp Camera.h Sphere.h
 	$(CXX) $(CXXFLAGS) -c render.cpp -o render.o
 
 .PHONY: clean
