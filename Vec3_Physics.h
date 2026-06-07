@@ -3,6 +3,7 @@
 #include "Sphere.h"
 #include <vector>
 
+// This class is not needed but might be helpful for future implementations, useful for organization as well.
 class Physics{
 
     // Float for the gravity.
@@ -32,7 +33,7 @@ class Physics{
     void orbital_mechanics(std::vector<Sphere> &Spheres, float deltaTime){
         // Get the size of the Vector
         int length = Spheres.size();
-
+        // TODO: This is O(n^2), need to use Barnes-Hut Tree:
         for(int i = 0; i < length-1; i++){
             for(int j = i+1; j < length; j++){
                 auto& Body1 = Spheres[i];

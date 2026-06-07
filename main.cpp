@@ -5,6 +5,7 @@
 
 // Allow Camera attributes to be included:
 #include "Camera.h"
+camera cam;
 
 //Include file for all physics attributes along with the Sphere struct:
 #include "Vec3_Physics.h"
@@ -71,7 +72,7 @@ int main()
     framebuffer.assign(WIDTH * HEIGHT * 3, 0.0f);
     glfwSetWindowSizeCallback(window, onResize);
 
-    camera cam;
+    
 
     float lastTime = glfwGetTime(); float deltaTime = 0;
 
