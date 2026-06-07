@@ -59,6 +59,7 @@ int main()
         return -1;
     }
 
+    // TODO: Need to change to SoA:
     std::vector<Sphere> Spheres = {
     {Vec3(0, 10, 2), 1.0f, Vec3(1,0,0), Vec3(-0.96,0,0), 5.0f},
     {Vec3(0, 5, -1.5), 0.75f, Vec3(0,1,0), Vec3(2.39,0,0), 2.0f},
