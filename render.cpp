@@ -98,7 +98,7 @@ void renderRows(int startY, int endY,Vec3 CameraPos, Vec3 forward, Vec3 right, V
 
                 // TODO: add real path tracing with real bounces of light
                 // This is faking light bounces: 
-                float ambient = 0.1f;
+                float ambient = 0.2f;
 
                 float diffuse = std::max(0.0f, SurfaceNorm.dot(lightDir));
 
