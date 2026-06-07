@@ -35,3 +35,12 @@ The file of include where GLFW was included was not altered in anyway and is use
 <img width="1246" height="643" alt="Screenshot 2026-05-16 at 7 39 56 PM" src="https://github.com/user-attachments/assets/d366b4eb-48af-4b6c-9722-ebcd0b987d8e" />
 
 Here is the image of the second iteration of the ray tracer with multiple spheres being rendered, evantually the Möller-Trumbore algorithm will be implemented so that the ray tracer can render triangle meshes. Along with improvements in optimization and other expected updates like refelctions.
+
+Optimization additions (To be added):
+- Changing the double for loop in Orbital_Mechanics function to use the Barnes-Hut Tree to go from O(n^2) to O(n log n).
+
+- Adding BVH to the Ray Tracer for when the simulation renders thousands of spheres for the atom model.
+
+- Making the Shadow Ray loop faster which BVH will help with.
+
+- Adding an easier way to load up all of the Spheres with intended positions (later when the atom model is added).
