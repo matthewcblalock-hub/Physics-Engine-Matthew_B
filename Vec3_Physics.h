@@ -56,7 +56,6 @@ class Physics{
         }
         for(auto& body : Spheres){
             body.center = body.center + body.velocity * deltaTime;
-            
 
             if(body.center.y <= body.radius){
                 body.center.y = body.radius;
