@@ -13,6 +13,8 @@ class camera{
     float sensitivity = 0.00009f;
     float speed = 600.0f;
 
+    float limit = M_PI/2 - 0.01;
+
     public:
 
     // Initialize componets:
@@ -39,6 +41,8 @@ class camera{
             double deltaY = mouseY - lastMouseY;
             yaw += deltaX * sensitivity;
             pitch += deltaY * sensitivity;
+            if(pitch > limit) pitch = limit;
+            if(pitch < -limit) pitch = -limit;
 
         }
 

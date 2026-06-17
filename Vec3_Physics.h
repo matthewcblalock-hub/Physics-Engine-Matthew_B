@@ -51,7 +51,7 @@ class Physics{
 
                 // Apply to Body1 (attract to Body2)
                 Body1.velocity = Body1.velocity + force * (deltaTime / Body1.mass);
-                Body2.velocity = Body2.velocity - force * (deltaTime / Body2.mass) ;
+                Body2.velocity = Body2.velocity - force * (deltaTime / Body2.mass);
             }
         }
         for(auto& body : Spheres){
