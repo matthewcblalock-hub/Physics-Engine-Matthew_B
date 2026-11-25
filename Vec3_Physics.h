@@ -17,9 +17,8 @@ class Physics{
 
         for(Sphere &sphere : Spheres){
 
-            sphere.velocity.y -= (G * sphere.mass) * deltaTime;
-
-            sphere.center.y += sphere.velocity.y * deltaTime;
+            sphere.center.y += sphere.velocity.y * deltaTime -0.5 * G * deltaTime*deltaTime;
+            sphere.velocity.y -= G * deltaTime;
 
             if(sphere.center.y <= sphere.radius){
 
